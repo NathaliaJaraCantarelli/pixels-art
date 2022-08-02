@@ -1,0 +1,28 @@
+.color {
+  display: inline-block;
+  border: black solid 1px;
+  height: 90px;
+  width: 90px;
+  margin-right: 20px;
+}
+
+#color-palette {
+  display: flex;
+  justify-content: center;
+}
+
+#black {
+  background-color: black;
+}
+
+#red {
+  background-color: red;
+}
+
+#green {
+  background-color: green;
+}
+
+#blue {
+  background-color: blue;
+}
