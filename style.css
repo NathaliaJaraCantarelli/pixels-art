@@ -6,6 +6,20 @@
   margin-right: 20px;
 }
 
+.pixel {
+  display: flex;
+  border: black solid 1px;
+  height: 90px;
+  width: 90px;
+  background-color: white;
+}
+
+#pixel-board {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
 #color-palette {
   display: flex;
   justify-content: center;
