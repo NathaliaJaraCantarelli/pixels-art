@@ -23,3 +23,11 @@ for (let i = 0; i < backColor.length; i += 1) {
     changeBackColor(i, backColor, paint);
   });
 }
+
+const clickButton = document.getElementById('clear-board');
+clickButton.addEventListener('click',function() {
+  let reset = document.getElementsByClassName('pixel');
+  for (let j = 0; j < reset.length; j += 1) {
+    reset[j].id = '';
+  }
+})
