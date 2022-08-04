@@ -10,8 +10,12 @@ function definir () {
   if (inputNumber == false){
     alert('Board inválido!');
     return false;
+  } else if (inputNumber < 5) {
+    creatMatrix (5);
+  } else if (inputNumber > 50) {
+  creatMatrix (50);
   } else {
-    creatMatrix (inputNumber)
+    creatMatrix (inputNumber);
   }
 }
 
