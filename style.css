@@ -1,3 +1,11 @@
+h1 {
+  text-align: center;
+}
+
+body {
+  background-color: rgb(233, 255, 248);
+}
+
 .color {
   display: inline-block;
   border: black solid 1px;
@@ -34,18 +42,6 @@
   background-color: black;
 }
 
-#red {
-  background-color: red;
-}
-
-#green {
-  background-color: green;
-}
-
-#blue {
-  background-color: blue;
-}
-
 .selected {
   background-color: black;
   width: 40px;
@@ -57,4 +53,9 @@
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+button, input {
+  margin: 0 10px;
+  width: 80px;
 }
