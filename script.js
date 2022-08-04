@@ -1,9 +1,38 @@
+let inputNumber = document.getElementById('board-size').value;
+
+let space = document.getElementById('pixel-board');
+const backColor = document.getElementsByClassName('pixel');
+const colorPaint = document.getElementsByClassName('color');
+
+function definir () {
+  inputNumber = document.getElementById('board-size').value;
+
+  if (inputNumber == false){
+    alert('Board inválido!');
+    return false;
+  } else {
+    creatMatrix (inputNumber)
+  }
+}
+
+function creatMatrix (inputNumber) {
+  for (let a = backColor.length - 1; a >= 0; a -= 1){
+    backColor[a].remove();
+  }
+  
+  for (let line = 0; line < inputNumber; line += 1) {
+    const linha = space.appendChild(document.createElement('div'));
+    linha.className = 'box';
+    for (let coluna = 0; coluna < inputNumber; coluna += 1) {
+      const coluna = linha.appendChild(document.createElement('div'));
+      coluna.className = 'pixel';
+    }
+  }
+
+
 function changeBackColor(posicaoAtual, position, cor) {
   position[posicaoAtual].id = cor;
 }
-
-const backColor = document.getElementsByClassName('pixel');
-const colorPaint = document.getElementsByClassName('color');
 
 let paint = 'black';
 
@@ -18,7 +47,7 @@ for (let i = 0; i < colorPaint.length; i += 1) {
   });
 }
 
-for (let i = 0; i < backColor.length; i += 1) {
+for (let i = 0; i < backColor.length; i += 1) { 
   backColor[i].addEventListener('click', function () {
     changeBackColor(i, backColor, paint);
   });
@@ -31,3 +60,6 @@ clickButton.addEventListener('click',function() {
     reset[j].id = '';
   }
 })
+}
+
+creatMatrix(5);
