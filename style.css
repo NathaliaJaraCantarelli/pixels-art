@@ -1,9 +1,10 @@
 h1 {
   text-align: center;
+  color: white;
 }
 
 body {
-  background-color: rgb(233, 255, 248);
+  background-image: url('https://i.pinimg.com/originals/f3/64/b7/f364b7d0a49566891789d291b8b2e53f.png');
 }
 
 .color {
@@ -55,7 +56,11 @@ body {
   justify-content: center;
 }
 
-button, input {
+button , input {
   margin: 0 10px;
   width: 80px;
+}
+
+button {
+  background-color: white;
 }

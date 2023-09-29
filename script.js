@@ -1,58 +1,35 @@
 let inputNumber = document.getElementById('board-size').value;
 
-let space = document.getElementById('pixel-board');
+const space = document.getElementById('pixel-board');
 const backColor = document.getElementsByClassName('pixel');
 const colorPaint = document.getElementsByClassName('color');
 
-let colorFirst = document.getElementById('color1');
-let colorSecond = document.getElementById('color2');
-let colorThird = document.getElementById('color3');
+const colorFirst = document.getElementById('color1');
+const colorSecond = document.getElementById('color2');
+const colorThird = document.getElementById('color3');
 
-colorFirst.style.backgroundColor = generateColor();
-colorSecond.style.backgroundColor = generateColor();
-colorThird.style.backgroundColor = generateColor();
-
-function definir () {
-  inputNumber = document.getElementById('board-size').value;
-
-  if (inputNumber == false){
-    alert('Board inválido!');
-    return false;
-  } else if (inputNumber < 5) {
-    creatMatrix (5);
-  } else if (inputNumber > 50) {
-  creatMatrix (50);
-  } else {
-    creatMatrix (inputNumber);
-  }
-}
-
-function creatMatrix (inputNumber) {
-  for (let a = backColor.length - 1; a >= 0; a -= 1){
+const removeMatrix = () => {
+  for (let a = backColor.length - 1; a >= 0; a -= 1) {
     backColor[a].remove();
   }
-  
-  for (let line = 0; line < inputNumber; line += 1) {
+};
+
+const creatChild = (inputNumberReceived) => {
+  for (let line = 0; line < inputNumberReceived; line += 1) {
     const linha = space.appendChild(document.createElement('div'));
     linha.className = 'box';
-    for (let coluna = 0; coluna < inputNumber; coluna += 1) {
-      const coluna = linha.appendChild(document.createElement('div'));
-      coluna.className = 'pixel';
+    for (let coluna = 0; coluna < inputNumberReceived; coluna += 1) {
+      const colunaMatrix = linha.appendChild(document.createElement('div'));
+      colunaMatrix.className = 'pixel';
     }
   }
+};
 
-
-function changeBackColor(posicaoAtual, position, cor) {
-  position[posicaoAtual].style.backgroundColor = cor;
-}
-
-let paint = 'black';
-let newColor = 'black';
-
-
-for (let i = 0; i < colorPaint.length; i += 1) { 
-  
-  colorPaint[i].addEventListener('click', function (event) {
+const paintColor = (changeBackColor) => {
+  let paint = 'black';
+  let newColor = 'black';
+  for (let i = 0; i < colorPaint.length; i += 1) {
+    colorPaint[i].addEventListener('click', (event) => {
     let classAfter = document.getElementById(paint);
     classAfter.className = 'color';
     let colorAtual = event.target.id;
@@ -61,18 +38,21 @@ for (let i = 0; i < colorPaint.length; i += 1) {
     classBefore.style.backgroundColor = paint;
     classBefore.className = 'color selected';
     newColor = classBefore.style.backgroundColor;
-    console.log(newColor);
-    
   });
-  for (let i = 0; i < backColor.length; i += 1) { 
-      backColor[i].addEventListener('click', function () {
-        changeBackColor(i, backColor, newColor);
-      });
-    }
+    for (let i = 0; i < backColor.length; i += 1) { 
+        backColor[i].addEventListener('click', function () {
+          changeBackColor(i, backColor, newColor);
+    })}
+  }
 }
 
-
-
+function creatMatrix (inputNumber) {
+  removeMatrix();
+  creatChild(inputNumber);
+  function changeBackColor(posicaoAtual, position, cor) {
+    position[posicaoAtual].style.backgroundColor = cor;
+  }
+  paintColor(changeBackColor);
 const clickButton = document.getElementById('clear-board');
 clickButton.addEventListener('click',function() {
   let reset = document.getElementsByClassName('pixel');
@@ -80,6 +60,22 @@ clickButton.addEventListener('click',function() {
     reset[j].style.backgroundColor = 'white';
   }
 })
+}
+
+function definir() {
+  inputNumber = document.getElementById('board-size').value;
+
+  if (inputNumber === false) {
+    alert('Board inválido!');
+    return false;
+  }
+  if (inputNumber < 5) {
+    creatMatrix(5);
+  } else if (inputNumber > 50) {
+    creatMatrix(50);
+  } else {
+    creatMatrix(inputNumber);
+  }
 }
 
 creatMatrix(5);
@@ -94,3 +90,6 @@ function generateColor() {
   return colorDraw;
 }
 
+colorFirst.style.backgroundColor = generateColor();
+colorSecond.style.backgroundColor = generateColor();
+colorThird.style.backgroundColor = generateColor();
